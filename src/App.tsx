@@ -1,5 +1,43 @@
-import {Box, Paper, Typography} from "@mui/material";
+import {Box, InputAdornment, Paper, type SxProps, TextField, Typography} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import {type ReactNode, useState} from "react";
+import {SearchProvider, useSearchStoreContext} from "./context/searchContext.tsx";
 
+const Section = ({children, sx}: { children: ReactNode, sx?: SxProps } ) => (
+    <Paper
+        component={'section'}
+        elevation={3}
+        sx={{
+            display: 'flex',
+            width: "100%",
+            // maxWidth: 900,
+            padding: "8px",
+            ...sx,
+        }}>{children}</Paper>
+)
+
+const Search = () => {
+    const {searchText, setSearchText} = useSearchStoreContext();
+
+    const handleChange = (newText: string) => setSearchText(newText);
+
+    return (
+        <>
+            <TextField
+                label="Search"
+                value={searchText}
+                fullWidth
+                onChange={e => handleChange(e.target.value)}
+                slotProps={{
+                    input: {
+                        startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
+                    },
+                }}
+            />
+
+        </>
+    )
+}
 function App() {
 
   return (
@@ -18,23 +56,21 @@ function App() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    bgcolor: 'white',
+                    rowGap: 2,
                     width: "100%",
-                    // border: 'solid 1px black',
-                    // height:"100%",
+                    maxWidth: 900,
                     margin: "8px",
-                    // borderRadius: 1,
+                    padding: "16px",
                 }}
             >
                 <Box component={'header'}>
-
-
-                    <Typography variant='h1'>Rolodex App
-                    </Typography>
+                    <Typography variant='h1'>Rolodex App</Typography>
                 </Box>
-                <Box component={'section'}>add new</Box>
-                <Box component={'section'}>search</Box>
-                <Box component={'section'}>components</Box>
+                <Section >add new</Section>
+                <SearchProvider>
+                    <Section ><Search /></Section>
+                    <Section >results</Section>
+                </SearchProvider>
             </Paper>
       </Box>
 

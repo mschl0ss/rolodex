@@ -1,9 +1,10 @@
 import type {UUID} from "uuidv7";
 
-type Person = {
+export type Person = {
     id: UUID,
     firstName: string,
     lastName: string,
+    dob: string,
     families: Family['id'][],
     email?: string,
     phone?: string,
@@ -14,7 +15,7 @@ type Person = {
 }
 
 
-type Family = {
+export type Family = {
     id: UUID,
     familyName: string,
     familyMembers: {
@@ -37,3 +38,7 @@ type Accommodation = {
     url: string[],
 }
 
+type Event = {
+    id: UUID,
+    organizers: Person['id'][],
+}
