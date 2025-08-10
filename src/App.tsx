@@ -1,4 +1,4 @@
-import {Box} from "@mui/material";
+import {Box, Paper, Typography} from "@mui/material";
 
 function App() {
 
@@ -11,30 +11,31 @@ function App() {
           width: "100%",
 
       }}>
-            <Box
+            <Paper
                 component={'main'}
+                elevation={3}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     bgcolor: 'white',
                     width: "100%",
-                    border: 'solid 1px black',
+                    // border: 'solid 1px black',
                     // height:"100%",
-                    margin: "24px",
-                    borderRadius: 1,
+                    margin: "8px",
+                    // borderRadius: 1,
                 }}
             >
                 <Box component={'header'}>
-                    Rolodex App
 
-                    {/*<Typography variant='h1'>*/}
-                    {/*</Typography>*/}
+
+                    <Typography variant='h1'>Rolodex App
+                    </Typography>
                 </Box>
                 <Box component={'section'}>add new</Box>
                 <Box component={'section'}>search</Box>
                 <Box component={'section'}>components</Box>
-            </Box>
+            </Paper>
       </Box>
 
   )
