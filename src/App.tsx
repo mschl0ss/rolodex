@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Box} from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Box sx={{
+          display: "flex",
+          justifyContent: "center",
+          // alignItems: "center",
+          height: "100vh",
+          width: "100%",
+
+      }}>
+            <Box
+                component={'main'}
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    bgcolor: 'white',
+                    width: "100%",
+                    border: 'solid 1px black',
+                    // height:"100%",
+                    margin: "24px",
+                    borderRadius: 1,
+                }}
+            >
+                <Box component={'header'}>
+                    Rolodex App
+
+                    {/*<Typography variant='h1'>*/}
+                    {/*</Typography>*/}
+                </Box>
+                <Box component={'section'}>add new</Box>
+                <Box component={'section'}>search</Box>
+                <Box component={'section'}>components</Box>
+            </Box>
+      </Box>
+
   )
 }
 
